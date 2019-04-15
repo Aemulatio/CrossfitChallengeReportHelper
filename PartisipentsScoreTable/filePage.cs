@@ -17,5 +17,10 @@ namespace PartisipentsScoreTable
             InitializeComponent();
         }
 
+        private void filePage_Load(object sender, EventArgs e)
+        {
+            //TODO: Make save/load file;
+            //TODO: If load -> convert to DB format (if it necessary)
+        }
     }
 }

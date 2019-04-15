@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//TODO: May be do some kind of report
+
 namespace PartisipentsScoreTable
 {
     public partial class showResults : UserControl
@@ -22,6 +24,10 @@ namespace PartisipentsScoreTable
 
         private void showResults_Load(object sender, EventArgs e)
         {
+            //TODO: Load data from DB to dataGridView (it should be it 2nd course's courseWork)
+
+
+
 //            foreach (var VARIABLE in challengerList.Challengers)
 //            {
 //                dataGridView1.Rows.Add(VARIABLE);

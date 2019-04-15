@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,40 @@ namespace PartisipentsScoreTable
         private void addBtn_Click(object sender, EventArgs e)
         {
             string fullName = firstNameBox.Text + " " + lastNameBox.Text;
+
+            try
+            {
+                SqlConnection con = new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString);
+                con.Open();
+                SqlCommand MCom = new SqlCommand();
+                
+                MCom.Connection = con;
+                //insert into <название таблицы> ([<Имя столбца>, ... ]) values (<Значение>,...)
+                //https://social.msdn.microsoft.com/Forums/vstudio/ru-RU/e5fa4f20-8293-4461-9fee-91867d4318ea/c-sql-insert-statement?forum=csharpgeneral
+                //https://stackoverflow.com/questions/12241084/how-to-insert-data-into-sql-server
+
+                MCom.CommandText = "INSERT INTO Challenger (Number, Name) values()"; //TODO: INSERTS
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+               
+                DataSet ds = new DataSet();
+                dataAdapter.Fill(ds, "Mesto");
+                
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+
+
+
+
+
+
+
 
             try
             {

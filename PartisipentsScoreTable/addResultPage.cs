@@ -19,6 +19,12 @@ namespace PartisipentsScoreTable
 
         private void addResultPage_Load(object sender, EventArgs e)
         {
+            //TODO: Add fetch query -> then fill ComboBoxes 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //TODO: Add results UPDATE or INSERT. Need to change what's better for this.
 
         }
     }

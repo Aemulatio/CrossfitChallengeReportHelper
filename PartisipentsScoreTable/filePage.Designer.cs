@@ -67,6 +67,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "filePage";
             this.Size = new System.Drawing.Size(945, 579);
+            this.Load += new System.EventHandler(this.filePage_Load);
             this.ResumeLayout(false);
 
         }

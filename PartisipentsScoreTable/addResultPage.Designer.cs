@@ -36,6 +36,7 @@
             this.challengerNameLbl = new System.Windows.Forms.Label();
             this.challengerWeightLbl = new System.Windows.Forms.Label();
             this.challengerRepeatsLbl = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // challengerNumberCB
@@ -117,10 +118,22 @@
             this.challengerRepeatsLbl.TabIndex = 2;
             this.challengerRepeatsLbl.Text = "CWeight";
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(344, 410);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(277, 71);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // addResultPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.challengerRepeatsLbl);
             this.Controls.Add(this.challengerWeightLbl);
             this.Controls.Add(this.challengerNameLbl);
@@ -147,5 +160,6 @@
         private System.Windows.Forms.Label challengerNameLbl;
         private System.Windows.Forms.Label challengerWeightLbl;
         private System.Windows.Forms.Label challengerRepeatsLbl;
+        private System.Windows.Forms.Button button1;
     }
 }
