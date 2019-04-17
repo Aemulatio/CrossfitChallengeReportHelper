@@ -27,36 +27,31 @@ namespace PartisipentsScoreTable
 
             try
             {
-                SqlConnection con = new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString);
-                con.Open();
-                SqlCommand MCom = new SqlCommand();
-                
-                MCom.Connection = con;
-                //insert into <название таблицы> ([<Имя столбца>, ... ]) values (<Значение>,...)
-                //https://social.msdn.microsoft.com/Forums/vstudio/ru-RU/e5fa4f20-8293-4461-9fee-91867d4318ea/c-sql-insert-statement?forum=csharpgeneral
-                //https://stackoverflow.com/questions/12241084/how-to-insert-data-into-sql-server
-
-                MCom.CommandText = "INSERT INTO Challenger (Number, Name) values()"; //TODO: INSERTS
-                SqlDataAdapter dataAdapter = new SqlDataAdapter();
-               
-                DataSet ds = new DataSet();
-                dataAdapter.Fill(ds, "Mesto");
-                
-                con.Close();
+                using (SqlConnection connection =
+                    new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString))
+                {
+                    connection.Open();
+                    try
+                    {
+                        using (SqlCommand command =
+                            new SqlCommand(@"INSERT Challenger VALUES(@number, @name, 0, 0, 0, 0, 0, 0, 0)",
+                                connection)) //TODO: INSERTS
+                        {
+                            command.Parameters.Add(new SqlParameter("@number", personNumberBox.Text));
+                            command.Parameters.Add(new SqlParameter("@name", fullName));
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
-
-
-
-
-
-
 
 
             try
@@ -79,8 +74,8 @@ namespace PartisipentsScoreTable
                 Console.WriteLine(VARIABLE.Name);
                 Console.WriteLine();
             }
-            Console.WriteLine("_________________________________");
 
+            Console.WriteLine("_________________________________");
         }
 
 //        public List<Challenger> Challengers
@@ -88,9 +83,5 @@ namespace PartisipentsScoreTable
 //            get { return challengers; }
 //
 //        }
-
-
-
-
     }
 }
