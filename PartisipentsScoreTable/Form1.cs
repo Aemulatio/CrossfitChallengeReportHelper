@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -98,6 +99,22 @@ namespace PartisipentsScoreTable
             sidePanel.Top = showResults.Top;
 
             showResults1.BringToFront();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://vk.com/aemulatio");
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Process.Start("https://www.instagram.com/stiiipan/");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //TODO: Сделать чтонибудь к этой кнопке, только еще хз что))) 
         }
     }
 }
