@@ -41,5 +41,16 @@ namespace PartisipentsScoreTable
             this.challengerBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.challengerDBDataSet);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            challengerDataGridView.Refresh();
+            challengerDataGridView.Update();
+        }
+
+        private void challengerDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.challengerDBDataSet = new PartisipentsScoreTable.ChallengerDBDataSet();
-            this.challengerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.challengerTableAdapter = new PartisipentsScoreTable.ChallengerDBDataSetTableAdapters.ChallengerTableAdapter();
-            this.tableAdapterManager = new PartisipentsScoreTable.ChallengerDBDataSetTableAdapters.TableAdapterManager();
             this.challengerDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,30 +39,15 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.challengerDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.challengerBindingSource)).BeginInit();
+            this.challengerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.challengerDBDataSet = new PartisipentsScoreTable.ChallengerDBDataSet();
+            this.challengerTableAdapter = new PartisipentsScoreTable.ChallengerDBDataSetTableAdapters.ChallengerTableAdapter();
+            this.tableAdapterManager = new PartisipentsScoreTable.ChallengerDBDataSetTableAdapters.TableAdapterManager();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.challengerDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.challengerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.challengerDBDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // challengerDBDataSet
-            // 
-            this.challengerDBDataSet.DataSetName = "ChallengerDBDataSet";
-            this.challengerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // challengerBindingSource
-            // 
-            this.challengerBindingSource.DataMember = "Challenger";
-            this.challengerBindingSource.DataSource = this.challengerDBDataSet;
-            // 
-            // challengerTableAdapter
-            // 
-            this.challengerTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ChallengerTableAdapter = this.challengerTableAdapter;
-            this.tableAdapterManager.UpdateOrder = PartisipentsScoreTable.ChallengerDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // challengerDataGridView
             // 
@@ -86,12 +67,13 @@
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9});
             this.challengerDataGridView.DataSource = this.challengerBindingSource;
-            this.challengerDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.challengerDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.challengerDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.challengerDataGridView.Location = new System.Drawing.Point(0, 30);
             this.challengerDataGridView.Name = "challengerDataGridView";
             this.challengerDataGridView.ReadOnly = true;
-            this.challengerDataGridView.Size = new System.Drawing.Size(945, 579);
+            this.challengerDataGridView.Size = new System.Drawing.Size(945, 549);
             this.challengerDataGridView.TabIndex = 1;
+            this.challengerDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.challengerDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -156,17 +138,49 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
+            // challengerBindingSource
+            // 
+            this.challengerBindingSource.DataMember = "Challenger";
+            this.challengerBindingSource.DataSource = this.challengerDBDataSet;
+            // 
+            // challengerDBDataSet
+            // 
+            this.challengerDBDataSet.DataSetName = "ChallengerDBDataSet";
+            this.challengerDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // challengerTableAdapter
+            // 
+            this.challengerTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.ChallengerTableAdapter = this.challengerTableAdapter;
+            this.tableAdapterManager.UpdateOrder = PartisipentsScoreTable.ChallengerDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(945, 30);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // showResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.challengerDataGridView);
             this.Name = "showResults";
             this.Size = new System.Drawing.Size(945, 579);
             this.Load += new System.EventHandler(this.showResults_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.challengerDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.challengerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.challengerDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.challengerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.challengerDBDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -187,5 +201,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.Button button1;
     }
 }
