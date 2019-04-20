@@ -50,6 +50,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,7 +74,6 @@
     <Compile Include="addResultPage.Designer.cs">
       <DependentUpon>addResultPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Challenger.cs" />
     <Compile Include="ChallengerDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,7 +97,6 @@
     <Compile Include="homePage.Designer.cs">
       <DependentUpon>homePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="showResults.cs">
