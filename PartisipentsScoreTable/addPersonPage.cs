@@ -13,17 +13,33 @@ namespace PartisipentsScoreTable
 {
     public partial class addPersonPage : UserControl
     {
-        private List<Challenger> challengers;
 
         public addPersonPage()
         {
             InitializeComponent();
-            challengers = new List<Challenger>();
         }
 
         private void addBtn_Click(object sender, EventArgs e)
         {
             string fullName = firstNameBox.Text + " " + lastNameBox.Text;
+
+            //https://www.youtube.com/watch?v=BHdNd6ojeDI  - delegation 
+
+            /*
+             *  using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString))
+                {
+                    string saveStaff = "INSERT into Challenger (staffName,userID,idDepartment) VALUES (@staffName,@userID,@idDepartment)";
+
+                    using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
+                    {
+                        querySaveStaff.Connection = connection;
+                        querySaveStaff.Parameters.Add("@staffName", SqlDbType.VarChar, 30).Value = name;
+                        connection.Open();
+                    }
+                }
+             */
+
+
 
             try
             {
@@ -53,7 +69,6 @@ namespace PartisipentsScoreTable
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
             try
             {
                 //challengers.Add(new Challenger(Convert.ToInt32(personNumberBox.Text), fullName));
@@ -64,18 +79,6 @@ namespace PartisipentsScoreTable
                 MessageBox.Show("Введен не верный номер!", "Повнимательней!", MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
-
-
-            Console.WriteLine("_________________________________");
-
-            foreach (var VARIABLE in challengers)
-            {
-                Console.WriteLine(VARIABLE.Number);
-                Console.WriteLine(VARIABLE.Name);
-                Console.WriteLine();
-            }
-
-            Console.WriteLine("_________________________________");
         }
 
 //        public List<Challenger> Challengers
