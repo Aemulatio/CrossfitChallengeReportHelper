@@ -14,15 +14,15 @@ namespace PartisipentsScoreTable
             InitializeComponent();
         }
 
-        private void addBtn_Click(object sender, EventArgs e)
+        private void addBtn_Click(object sender, EventArgs e) //TODO: MessageBoxes Caption
         {
             string fullName = firstNameBox.Text + " " + lastNameBox.Text;
 
             try
             {
-                if (!File.Exists(@".\Challangers.xml"))
+                if (!File.Exists(@".\Challengers.xml"))
                 {
-                    using (StreamWriter sr = File.CreateText(@".\Challangers.xml"))
+                    using (StreamWriter sr = File.CreateText(@".\Challengers.xml"))
                     {
                         sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf - 8\" ?>");
                         sr.WriteLine("< challengers >");
@@ -34,13 +34,13 @@ namespace PartisipentsScoreTable
 
                 List<int> bisyNumbersList = xDoc.Root
                     .Elements("Challenger")
-                    .Elements("Number")
+                    .Attributes("Number")
                     .Select(x => (int) x).ToList();
 
                 List<string> challengersList = xDoc.Root
                     .Elements("Challenger")
-                    .Elements("Name")
-                    .Select(x => (string)x).ToList();
+                    .Attributes("Name")
+                    .Select(x => (string) x).ToList();
 
 
                 if (firstNameBox.Text == string.Empty
@@ -65,15 +65,15 @@ namespace PartisipentsScoreTable
 
                 XElement newElement =
                     new XElement("Challenger",
-                        new XElement("Number", personNumberBox.Text),
-                        new XElement("Name", fullName),
-                        new XElement("w25", 0),
-                        new XElement("w35", 0),
-                        new XElement("w45", 0),
-                        new XElement("w60", 0),
-                        new XElement("w70", 0),
-                        new XElement("w80", 0),
-                        new XElement("w100", 0)
+                        new XAttribute("Number", personNumberBox.Text),
+                        new XAttribute("Name", fullName),
+                        new XAttribute("w25", 0),
+                        new XAttribute("w35", 0),
+                        new XAttribute("w45", 0),
+                        new XAttribute("w60", 0),
+                        new XAttribute("w70", 0),
+                        new XAttribute("w80", 0),
+                        new XAttribute("w100", 0)
                     );
                 xDoc.Descendants("Challengers").Last().Add(newElement);
                 xDoc.Save("Challengers.xml");

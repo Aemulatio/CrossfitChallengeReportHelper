@@ -41,7 +41,7 @@
             // 
             this.lastNameLbl.AutoSize = true;
             this.lastNameLbl.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameLbl.Location = new System.Drawing.Point(220, 138);
+            this.lastNameLbl.Location = new System.Drawing.Point(219, 138);
             this.lastNameLbl.Name = "lastNameLbl";
             this.lastNameLbl.Size = new System.Drawing.Size(151, 38);
             this.lastNameLbl.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             this.firstNameLbl.AutoSize = true;
             this.firstNameLbl.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameLbl.Location = new System.Drawing.Point(220, 213);
+            this.firstNameLbl.Location = new System.Drawing.Point(219, 213);
             this.firstNameLbl.Name = "firstNameLbl";
             this.firstNameLbl.Size = new System.Drawing.Size(81, 38);
             this.firstNameLbl.TabIndex = 0;
@@ -60,7 +60,7 @@
             // lastNameBox
             // 
             this.lastNameBox.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameBox.Location = new System.Drawing.Point(377, 135);
+            this.lastNameBox.Location = new System.Drawing.Point(376, 135);
             this.lastNameBox.Name = "lastNameBox";
             this.lastNameBox.Size = new System.Drawing.Size(371, 47);
             this.lastNameBox.TabIndex = 1;
@@ -68,7 +68,7 @@
             // firstNameBox
             // 
             this.firstNameBox.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.firstNameBox.Location = new System.Drawing.Point(377, 210);
+            this.firstNameBox.Location = new System.Drawing.Point(376, 210);
             this.firstNameBox.Name = "firstNameBox";
             this.firstNameBox.Size = new System.Drawing.Size(371, 47);
             this.firstNameBox.TabIndex = 1;
@@ -77,7 +77,7 @@
             // 
             this.personNumberLbl.AutoSize = true;
             this.personNumberLbl.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.personNumberLbl.Location = new System.Drawing.Point(220, 288);
+            this.personNumberLbl.Location = new System.Drawing.Point(219, 288);
             this.personNumberLbl.Name = "personNumberLbl";
             this.personNumberLbl.Size = new System.Drawing.Size(120, 38);
             this.personNumberLbl.TabIndex = 0;
@@ -86,7 +86,7 @@
             // personNumberBox
             // 
             this.personNumberBox.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.personNumberBox.Location = new System.Drawing.Point(377, 285);
+            this.personNumberBox.Location = new System.Drawing.Point(376, 285);
             this.personNumberBox.Name = "personNumberBox";
             this.personNumberBox.Size = new System.Drawing.Size(371, 47);
             this.personNumberBox.TabIndex = 1;
@@ -95,7 +95,7 @@
             // 
             this.addBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addBtn.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBtn.Location = new System.Drawing.Point(377, 389);
+            this.addBtn.Location = new System.Drawing.Point(376, 389);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(245, 47);
             this.addBtn.TabIndex = 2;
