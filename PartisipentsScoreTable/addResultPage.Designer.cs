@@ -30,8 +30,8 @@
         {
             this.challengerNumberCB = new System.Windows.Forms.ComboBox();
             this.challengerNameCB = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.weightsBox = new System.Windows.Forms.ComboBox();
+            this.repeatsBox = new System.Windows.Forms.TextBox();
             this.challengerNumberLbl = new System.Windows.Forms.Label();
             this.challengerNameLbl = new System.Windows.Forms.Label();
             this.challengerWeightLbl = new System.Windows.Forms.Label();
@@ -65,12 +65,12 @@
             this.challengerNameCB.TabIndex = 0;
             this.challengerNameCB.SelectedIndexChanged += new System.EventHandler(this.challengerNameCB_SelectedIndexChanged);
             // 
-            // comboBox1
+            // weightsBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.weightsBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weightsBox.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weightsBox.FormattingEnabled = true;
+            this.weightsBox.Items.AddRange(new object[] {
             "25",
             "35",
             "45",
@@ -78,20 +78,20 @@
             "70",
             "80",
             "100"});
-            this.comboBox1.Location = new System.Drawing.Point(634, 105);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(107, 37);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.weightsBox.Location = new System.Drawing.Point(634, 105);
+            this.weightsBox.Name = "weightsBox";
+            this.weightsBox.Size = new System.Drawing.Size(107, 37);
+            this.weightsBox.TabIndex = 0;
+            this.weightsBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox1
+            // repeatsBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(747, 106);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(112, 36);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.repeatsBox.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.repeatsBox.Location = new System.Drawing.Point(747, 106);
+            this.repeatsBox.Name = "repeatsBox";
+            this.repeatsBox.Size = new System.Drawing.Size(112, 36);
+            this.repeatsBox.TabIndex = 1;
+            this.repeatsBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // challengerNumberLbl
             // 
@@ -169,9 +169,9 @@
             this.Controls.Add(this.challengerWeightLbl);
             this.Controls.Add(this.challengerNameLbl);
             this.Controls.Add(this.challengerNumberLbl);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.repeatsBox);
             this.Controls.Add(this.challengerNameCB);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.weightsBox);
             this.Controls.Add(this.challengerNumberCB);
             this.Name = "addResultPage";
             this.Size = new System.Drawing.Size(945, 579);
@@ -187,8 +187,8 @@
 
         private System.Windows.Forms.ComboBox challengerNumberCB;
         private System.Windows.Forms.ComboBox challengerNameCB;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox weightsBox;
+        private System.Windows.Forms.TextBox repeatsBox;
         private System.Windows.Forms.Label challengerNumberLbl;
         private System.Windows.Forms.Label challengerNameLbl;
         private System.Windows.Forms.Label challengerWeightLbl;

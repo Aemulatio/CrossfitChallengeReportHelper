@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
 using System.IO;
 
@@ -39,16 +32,35 @@ namespace PartisipentsScoreTable
 
                 XDocument xDoc = XDocument.Load("Challengers.xml");
 
-                var name = from Challengers in xDoc.Descendants("Challengers")
-                    select Challengers.Element("Name").Value;
+                List<int> bisyNumbersList = xDoc.Root
+                    .Elements("Challenger")
+                    .Elements("Number")
+                    .Select(x => (int) x).ToList();
+
+                List<string> challengersList = xDoc.Root
+                    .Elements("Challenger")
+                    .Elements("Name")
+                    .Select(x => (string)x).ToList();
 
 
-                Console.WriteLine(name);
-                Console.WriteLine(name.GetType());
-
-                foreach (var VARIABLE in name)
+                if (firstNameBox.Text == string.Empty
+                    || lastNameBox.Text == String.Empty
+                    || personNumberBox.Text == String.Empty)
                 {
-                    Console.WriteLine(VARIABLE);
+                    MessageBox.Show("Не все поля заполненны", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                if (bisyNumbersList.Contains(Convert.ToInt32(personNumberBox.Text)))
+                {
+                    MessageBox.Show("Номер уже занят", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                if (challengersList.Contains(fullName))
+                {
+                    MessageBox.Show("Уже внесен в список", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
                 }
 
                 XElement newElement =

@@ -5,10 +5,12 @@ using System.Drawing;
 using System.Data;
 using System.Data.Linq;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace PartisipentsScoreTable
 {
@@ -24,102 +26,53 @@ namespace PartisipentsScoreTable
         {
             try
             {
-                using (SqlConnection connection =
-                    new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString))
+                if (!File.Exists(@".\Challangers.xml"))
                 {
-                    connection.Open();
-                    try
-                    {
-                        using (SqlCommand command = new SqlCommand(@"select * from Challenger",
-                            connection)) //TODO: INSERTS
-                        {
-                            SqlDataReader reader = command.ExecuteReader();
-                            while (reader.Read())
-                            {
-                                Console.WriteLine("aaaaaa - " + reader[0]);
-                                Console.WriteLine("aaaaaa - " + reader[1]);
-                                Console.WriteLine("aaaaaa -----------------");
-                                challengerNumberCB.Items.Add(reader[0].ToString());
-                                challengerNameCB.Items.Add(reader[1].ToString());
-                                CurrentStatus.Text = $"Загружен - {reader[1]}";
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    return;
                 }
 
-                CurrentStatus.Text = "Все данные загружены";
+                XDocument xDoc = XDocument.Load("Challengers.xml");
+
+                List<int> numbersList = xDoc.Root
+                    .Elements("Challenger")
+                    .Elements("Number")
+                    .Select(x => (int)x).ToList();
+
+                List<string> challengersList = xDoc.Root
+                    .Elements("Challenger")
+                    .Elements("Name")
+                    .Select(x => (string)x).ToList();
+
+
+                
+
+                
+                xDoc.Save("Challengers.xml");
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                MessageBox.Show(ex.Message + "\nНе работаю(");
+                MessageBox.Show(exception.Message);
             }
+
+
+
+
+
+
+
+
+
+
+
+
+            CurrentStatus.Text = "Все данные загружены";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //TODO: Add results UPDATE
-            try
-            {
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                /*
-                SqlDataAdapter dataAdapter = new SqlDataAdapter();
-                DataTable tbl = new DataTable();
-                SqlCommand command = new SqlCommand("UPDATE Challenger SET '25' = @reps Where Number = @num");
-                SqlConnection con = new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString);
-                con.Open();
-                command.Parameters.AddWithValue("@reps", Convert.ToInt32(challengerRepeatsLbl.Text));
-                command.Parameters.AddWithValue("@num", Convert.ToInt32(challengerNumberLbl.Text));
-                dataAdapter.SelectCommand = command;
-                dataAdapter.SelectCommand.Connection = con;
-                tbl.Locale = System.Globalization.CultureInfo.InvariantCulture;
-                dataAdapter.Fill(tbl);
 
-                using (var cmdBuilder = new SqlCommandBuilder(dataAdapter))
-                {
-                    dataAdapter.Update(tbl);
-                }
-
-                /*using (SqlConnection connection =
-                    new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString))
-                {
-                    connection.Open();
-                    try
-                    {
-                        using (SqlCommand command = new SqlCommand(
-                            "UPDATE Challenger SET " + comboBox1.SelectedItem.ToString() +
-                            " = @reps Where Number = @num",
-                            connection)) //TODO: INSERTS
-                        {
-                            command.Parameters.AddWithValue("@reps", Convert.ToInt32(challengerRepeatsLbl.Text));
-                            command.Parameters.AddWithValue("@num", Convert.ToInt32(challengerNumberLbl.Text));
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-                */
-                CurrentStatus.Text = "Обновил (☆▽☆)";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "\nНе работаю(");
-            }
+            CurrentStatus.Text = "Обновил (☆▽☆)";
         }
 
         private void challengerNumberCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,12 +89,12 @@ namespace PartisipentsScoreTable
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            challengerWeightLbl.Text = comboBox1.SelectedItem.ToString();
+            challengerWeightLbl.Text = weightsBox.SelectedItem.ToString();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            challengerRepeatsLbl.Text = textBox1.Text != String.Empty ? textBox1.Text : "Повторы";
+            challengerRepeatsLbl.Text = repeatsBox.Text != String.Empty ? repeatsBox.Text : "Повторы";
         }
     }
 }
