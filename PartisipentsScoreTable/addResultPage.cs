@@ -21,32 +21,48 @@ namespace PartisipentsScoreTable
             InitializeComponent();
         }
 
+        private XDocument xDoc;
 
         private void addResultPage_Load(object sender, EventArgs e)
         {
             try
             {
-                if (!File.Exists(@".\Challangers.xml"))
+                if (!File.Exists(@".\Challengers.xml"))
                 {
                     return;
                 }
 
-                XDocument xDoc = XDocument.Load("Challengers.xml");
+                xDoc = XDocument.Load("Challengers.xml");
+
+                #region ChallengersNumberComboBox
 
                 List<int> numbersList = xDoc.Root
                     .Elements("Challenger")
-                    .Elements("Number")
-                    .Select(x => (int)x).ToList();
+                    .Attributes("Number")
+                    .Select(x => (int) x).ToList();
+
+                foreach (var VARIABLE in numbersList)
+                {
+                    challengerNumberCB.Items.Add(VARIABLE);
+                }
+
+                #endregion
+
+                #region ChallengersNameComboBox
 
                 List<string> challengersList = xDoc.Root
                     .Elements("Challenger")
-                    .Elements("Name")
-                    .Select(x => (string)x).ToList();
+                    .Attributes("Name")
+                    .Select(x => (string) x).ToList();
+
+                foreach (var VARIABLE in challengersList)
+                {
+                    challengerNameCB.Items.Add(VARIABLE);
+                }
+
+                #endregion
 
 
-                
-
-                
                 xDoc.Save("Challengers.xml");
             }
             catch (Exception exception)
@@ -54,23 +70,127 @@ namespace PartisipentsScoreTable
                 MessageBox.Show(exception.Message);
             }
 
-
-
-
-
-
-
-
-
-
-
-
             CurrentStatus.Text = "Все данные загружены";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //TODO: Add results UPDATE
         {
-            //TODO: Add results UPDATE
+            xDoc = XDocument.Load("Challengers.xml");
+
+            #region GettingAllRepeats
+
+            #region 25
+
+            List<int> w25 = xDoc.Root
+                .Elements("Challenger")
+                .Attributes("w25")
+                .Select(x => (int) x).ToList();
+
+            int W25 = w25[0];
+
+            #endregion
+
+            #region 35
+
+            List<int> w35 = xDoc.Root
+                .Elements("Challenger")
+                .Attributes("w35")
+                .Select(x => (int) x).ToList();
+            int W35 = w35[0];
+
+            #endregion
+
+            #region 45
+
+            List<int> w45 = xDoc.Root
+                .Elements("Challenger")
+                .Attributes("w45")
+                .Select(x => (int) x).ToList();
+            int W45 = w45[0];
+
+            #endregion
+
+            #region 60
+
+            List<int> w60 = xDoc.Root
+                .Elements("Challenger")
+                .Attributes("w60")
+                .Select(x => (int) x).ToList();
+            int W60 = w60[0];
+
+            #endregion
+
+            #region 70
+
+            List<int> w70 = xDoc.Root
+                .Elements("Challenger")
+                .Attributes("w70")
+                .Select(x => (int) x).ToList();
+            int W70 = w70[0];
+
+            #endregion
+
+            #region 80
+
+            List<int> w80 = xDoc.Root
+                .Elements("Challenger")
+                .Attributes("w80")
+                .Select(x => (int) x).ToList();
+            int W80 = w80[0];
+
+            #endregion
+
+            #region 100
+
+            List<int> w100 = xDoc.Root
+                .Elements("Challenger")
+                .Attributes("w100")
+                .Select(x => (int) x).ToList();
+            int W100 = w100[0];
+
+            #endregion
+
+            #endregion
+
+
+            if (repeatsBox.Text == String.Empty)
+            {
+                return;
+            }
+
+            int currentRepeats = Convert.ToInt32(repeatsBox.Text);
+
+            IEnumerable<XElement> result = new List<XElement>();
+
+            switch (challengerWeightLbl.Text)
+            {
+                case "25":
+                    W25 += currentRepeats;
+                    break;
+                case "35":
+                    W35 += currentRepeats;
+                    break;
+                case "45":
+                    W45 += currentRepeats;
+                    break;
+                case "60":
+                    W60 += currentRepeats;
+                    break;
+                case "70":
+                    W70 += currentRepeats;
+                    break;
+                case "80":
+                    W80 += currentRepeats;
+                    break;
+                case "100":
+                    W100 += currentRepeats;
+                    break;
+                default:
+                    MessageBox.Show("Weight doesn't choose", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+            }
+
+            // XElement reps = xDoc.
 
             CurrentStatus.Text = "Обновил (☆▽☆)";
         }

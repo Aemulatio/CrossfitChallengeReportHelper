@@ -61,7 +61,7 @@
             this.challengerNameCB.FormattingEnabled = true;
             this.challengerNameCB.Location = new System.Drawing.Point(294, 105);
             this.challengerNameCB.Name = "challengerNameCB";
-            this.challengerNameCB.Size = new System.Drawing.Size(241, 37);
+            this.challengerNameCB.Size = new System.Drawing.Size(259, 37);
             this.challengerNameCB.TabIndex = 0;
             this.challengerNameCB.SelectedIndexChanged += new System.EventHandler(this.challengerNameCB_SelectedIndexChanged);
             // 
