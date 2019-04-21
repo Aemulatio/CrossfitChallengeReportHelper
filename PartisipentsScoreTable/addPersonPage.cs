@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace PartisipentsScoreTable
 {
@@ -22,6 +23,19 @@ namespace PartisipentsScoreTable
         private void addBtn_Click(object sender, EventArgs e)
         {
             string fullName = firstNameBox.Text + " " + lastNameBox.Text;
+
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load("Challengers.xml");
+            // получим корневой элемент
+            XmlElement xRoot = xDoc.DocumentElement;
+            // обход всех узлов в корневом элементе
+
+            Console.WriteLine(xRoot);
+
+
+
+
+
 
             //https://www.youtube.com/watch?v=BHdNd6ojeDI  - delegation 
 
@@ -38,47 +52,51 @@ namespace PartisipentsScoreTable
                     }
                 }
              */
+            /*
+
+
+           try
+           {
+               using (SqlConnection connection =
+                   new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString))
+               {
+                   connection.Open();
+                   try
+                   {
+                       using (SqlCommand command =
+                           new SqlCommand(@"INSERT Challenger VALUES(@number, @name, 0, 0, 0, 0, 0, 0, 0)",
+                               connection)) //TODO: INSERTS
+                       {
+                           command.Parameters.Add(new SqlParameter("@number", personNumberBox.Text));
+                           command.Parameters.Add(new SqlParameter("@name", fullName));
+                           command.ExecuteNonQuery();
+                       }
+                   }
+                   catch (Exception ex)
+                   {
+                       MessageBox.Show(ex.Message);
+                   }
+               }
+           }
+           catch (Exception ex)
+           {
+               MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           }
+
+           try
+           {
+               //challengers.Add(new Challenger(Convert.ToInt32(personNumberBox.Text), fullName));
+               firstNameBox.Text = lastNameBox.Text = personNumberBox.Text = string.Empty;
+           }
+           catch
+           {
+               MessageBox.Show("Введен не верный номер!", "Повнимательней!", MessageBoxButtons.OK,
+                   MessageBoxIcon.Exclamation);
+           }*/
 
 
 
-            try
-            {
-                using (SqlConnection connection =
-                    new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString))
-                {
-                    connection.Open();
-                    try
-                    {
-                        using (SqlCommand command =
-                            new SqlCommand(@"INSERT Challenger VALUES(@number, @name, 0, 0, 0, 0, 0, 0, 0)",
-                                connection)) //TODO: INSERTS
-                        {
-                            command.Parameters.Add(new SqlParameter("@number", personNumberBox.Text));
-                            command.Parameters.Add(new SqlParameter("@name", fullName));
-                            command.ExecuteNonQuery();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-            try
-            {
-                //challengers.Add(new Challenger(Convert.ToInt32(personNumberBox.Text), fullName));
-                firstNameBox.Text = lastNameBox.Text = personNumberBox.Text = string.Empty;
-            }
-            catch
-            {
-                MessageBox.Show("Введен не верный номер!", "Повнимательней!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-            }
         }
 
 //        public List<Challenger> Challengers

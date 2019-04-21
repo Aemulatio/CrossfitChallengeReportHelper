@@ -64,6 +64,18 @@ namespace PartisipentsScoreTable
             //TODO: Add results UPDATE
             try
             {
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                /*
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
                 DataTable tbl = new DataTable();
                 SqlCommand command = new SqlCommand("UPDATE Challenger SET '25' = @reps Where Number = @num");

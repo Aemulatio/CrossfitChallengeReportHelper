@@ -177,11 +177,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>ChallengerDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Challengers.xml" />
     <Content Include="icons\jesper-aggergaard-539148-unsplash.jpg" />
     <Content Include="icons\scott-webb-22420-unsplash.jpg" />
     <Content Include="icons\victor-freitas-546919-unsplash.jpg" />
     <Content Include="icons\victor-freitas-549214-unsplash.jpg" />
     <Content Include="icons\victor-freitas-667655-unsplash.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
