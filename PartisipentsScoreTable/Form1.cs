@@ -72,8 +72,6 @@ namespace PartisipentsScoreTable
 
             homePage1.BringToFront();
 
-
-
         }
 
         private void addPersonBtn_Click(object sender, EventArgs e)
@@ -104,7 +102,6 @@ namespace PartisipentsScoreTable
         private void button1_Click(object sender, EventArgs e)
         {
             Process.Start("https://vk.com/aemulatio");
-
         }
 
         private void button2_Click_1(object sender, EventArgs e)
