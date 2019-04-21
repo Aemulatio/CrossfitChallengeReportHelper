@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
+using System.IO;
 
 namespace PartisipentsScoreTable
 {
     public partial class addPersonPage : UserControl
     {
-
         public addPersonPage()
         {
             InitializeComponent();
@@ -24,85 +25,51 @@ namespace PartisipentsScoreTable
         {
             string fullName = firstNameBox.Text + " " + lastNameBox.Text;
 
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load("Challengers.xml");
-            // получим корневой элемент
-            XmlElement xRoot = xDoc.DocumentElement;
-            // обход всех узлов в корневом элементе
-
-            Console.WriteLine(xRoot);
-
-
-
-
-
-
-            //https://www.youtube.com/watch?v=BHdNd6ojeDI  - delegation 
-
-            /*
-             *  using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString))
+            try
+            {
+                if (!File.Exists(@".\Challangers.xml"))
                 {
-                    string saveStaff = "INSERT into Challenger (staffName,userID,idDepartment) VALUES (@staffName,@userID,@idDepartment)";
-
-                    using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
+                    using (StreamWriter sr = File.CreateText(@".\Challangers.xml"))
                     {
-                        querySaveStaff.Connection = connection;
-                        querySaveStaff.Parameters.Add("@staffName", SqlDbType.VarChar, 30).Value = name;
-                        connection.Open();
+                        sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf - 8\" ?>");
+                        sr.WriteLine("< challengers >");
+                        sr.WriteLine("</ challengers >");
                     }
                 }
-             */
-            /*
+
+                XDocument xDoc = XDocument.Load("Challengers.xml");
+
+                var name = from Challengers in xDoc.Descendants("Challengers")
+                    select Challengers.Element("Name").Value;
 
 
-           try
-           {
-               using (SqlConnection connection =
-                   new SqlConnection(Properties.Settings.Default.ChallengerDBConnectionString))
-               {
-                   connection.Open();
-                   try
-                   {
-                       using (SqlCommand command =
-                           new SqlCommand(@"INSERT Challenger VALUES(@number, @name, 0, 0, 0, 0, 0, 0, 0)",
-                               connection)) //TODO: INSERTS
-                       {
-                           command.Parameters.Add(new SqlParameter("@number", personNumberBox.Text));
-                           command.Parameters.Add(new SqlParameter("@name", fullName));
-                           command.ExecuteNonQuery();
-                       }
-                   }
-                   catch (Exception ex)
-                   {
-                       MessageBox.Show(ex.Message);
-                   }
-               }
-           }
-           catch (Exception ex)
-           {
-               MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-           }
+                Console.WriteLine(name);
+                Console.WriteLine(name.GetType());
 
-           try
-           {
-               //challengers.Add(new Challenger(Convert.ToInt32(personNumberBox.Text), fullName));
-               firstNameBox.Text = lastNameBox.Text = personNumberBox.Text = string.Empty;
-           }
-           catch
-           {
-               MessageBox.Show("Введен не верный номер!", "Повнимательней!", MessageBoxButtons.OK,
-                   MessageBoxIcon.Exclamation);
-           }*/
+                foreach (var VARIABLE in name)
+                {
+                    Console.WriteLine(VARIABLE);
+                }
 
-
-
-
+                XElement newElement =
+                    new XElement("Challenger",
+                        new XElement("Number", personNumberBox.Text),
+                        new XElement("Name", fullName),
+                        new XElement("w25", 0),
+                        new XElement("w35", 0),
+                        new XElement("w45", 0),
+                        new XElement("w60", 0),
+                        new XElement("w70", 0),
+                        new XElement("w80", 0),
+                        new XElement("w100", 0)
+                    );
+                xDoc.Descendants("Challengers").Last().Add(newElement);
+                xDoc.Save("Challengers.xml");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
-
-//        public List<Challenger> Challengers
-//        {
-//            get { return challengers; }
-//
-//        }
     }
 }
