@@ -10,7 +10,7 @@
 
 
 <div>
-    <img src="https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/start.png">
+    <img src="https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/start.png" width = 700>
     
 </div>
 
@@ -24,7 +24,6 @@
 
     ![Результаты](https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/ShowPageResult.png)
 
-![Flow Chart](https://github.com/nozzle/react-static/raw/master/media/flow.png)
 
 
 
