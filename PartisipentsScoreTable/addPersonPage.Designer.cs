@@ -71,7 +71,7 @@
             this.firstNameBox.Location = new System.Drawing.Point(376, 210);
             this.firstNameBox.Name = "firstNameBox";
             this.firstNameBox.Size = new System.Drawing.Size(371, 47);
-            this.firstNameBox.TabIndex = 1;
+            this.firstNameBox.TabIndex = 2;
             // 
             // personNumberLbl
             // 
@@ -89,7 +89,7 @@
             this.personNumberBox.Location = new System.Drawing.Point(376, 285);
             this.personNumberBox.Name = "personNumberBox";
             this.personNumberBox.Size = new System.Drawing.Size(371, 47);
-            this.personNumberBox.TabIndex = 1;
+            this.personNumberBox.TabIndex = 3;
             // 
             // addBtn
             // 
@@ -98,7 +98,7 @@
             this.addBtn.Location = new System.Drawing.Point(376, 389);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(245, 47);
-            this.addBtn.TabIndex = 2;
+            this.addBtn.TabIndex = 4;
             this.addBtn.Text = "OK";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
