@@ -144,7 +144,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(472, 30);
+            this.button1.Size = new System.Drawing.Size(502, 30);
             this.button1.TabIndex = 2;
             this.button1.Text = "Обновить";
             this.button1.UseVisualStyleBackColor = true;
@@ -154,9 +154,9 @@
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(472, 0);
+            this.button2.Location = new System.Drawing.Point(502, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(473, 30);
+            this.button2.Size = new System.Drawing.Size(443, 30);
             this.button2.TabIndex = 3;
             this.button2.Text = "Сохранить";
             this.button2.UseVisualStyleBackColor = true;
