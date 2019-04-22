@@ -8,7 +8,7 @@
 
 <div>
     <p>
-    ![Стартовый экран](https://raw.githubusercontent.com/Aemulatio/CrossfitChallengeReportHelper/XML/media/start.png)
+    ![Стартовый экран](https://github.com/Aemulatio/CrossfitChallengeReportHelper/XML/media/start.png)
     </p>
     <p>
     ![Внесение участников](https://raw.githubusercontent.com/Aemulatio/CrossfitChallengeReportHelper/XML/media/addPersonPage.png)
