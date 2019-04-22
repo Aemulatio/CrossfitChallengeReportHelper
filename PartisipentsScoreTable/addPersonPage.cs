@@ -25,8 +25,8 @@ namespace PartisipentsScoreTable
                     using (StreamWriter sr = File.CreateText(@".\Challengers.xml"))
                     {
                         sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf - 8\" ?>");
-                        sr.WriteLine("< challengers >");
-                        sr.WriteLine("</ challengers >");
+                        sr.WriteLine("<Challengers>");
+                        sr.WriteLine("</Challengers>");
                     }
                 }
 

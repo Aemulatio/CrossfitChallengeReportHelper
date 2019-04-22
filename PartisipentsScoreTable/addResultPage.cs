@@ -161,11 +161,11 @@ namespace PartisipentsScoreTable
 
                 int currentRepeats = Convert.ToInt32(repeatsBox.Text);
 
-                IEnumerable<XElement> rrr = new List<XElement>();
+                IEnumerable<XElement> results = new List<XElement>();
 
                 try
                 {
-                    rrr = from chal in xDoc.Root.Descendants("Challenger")
+                    results = from chal in xDoc.Root.Descendants("Challenger")
                         where chal.Attribute("Number").Value == challengerNumberCB.SelectedItem.ToString()
                         select chal; //return person with selected number
                 }
@@ -174,38 +174,38 @@ namespace PartisipentsScoreTable
                     MessageBox.Show(exception.Message, "#");
                 }
 
-                XElement r = rrr.ElementAt(0);
+                XElement result = results.ElementAt(0);
 
 
                 switch (challengerWeightLbl.Text)
                 {
                     case "25":
                         W25 += currentRepeats;
-                        r.Attribute("w" + challengerWeightLbl.Text).Value = W25.ToString();
+                        result.Attribute("w" + challengerWeightLbl.Text).Value = W25.ToString();
                         break;
                     case "35":
                         W35 += currentRepeats;
-                        r.Attribute("w" + challengerWeightLbl.Text).Value = W35.ToString();
+                        result.Attribute("w" + challengerWeightLbl.Text).Value = W35.ToString();
                         break;
                     case "45":
                         W45 += currentRepeats;
-                        r.Attribute("w" + challengerWeightLbl.Text).Value = W45.ToString();
+                        result.Attribute("w" + challengerWeightLbl.Text).Value = W45.ToString();
                         break;
                     case "60":
                         W60 += currentRepeats;
-                        r.Attribute("w" + challengerWeightLbl.Text).Value = W60.ToString();
+                        result.Attribute("w" + challengerWeightLbl.Text).Value = W60.ToString();
                         break;
                     case "70":
                         W70 += currentRepeats;
-                        r.Attribute("w" + challengerWeightLbl.Text).Value = W70.ToString();
+                        result.Attribute("w" + challengerWeightLbl.Text).Value = W70.ToString();
                         break;
                     case "80":
                         W80 += currentRepeats;
-                        r.Attribute("w" + challengerWeightLbl.Text).Value = W80.ToString();
+                        result.Attribute("w" + challengerWeightLbl.Text).Value = W80.ToString();
                         break;
                     case "100":
                         W100 += currentRepeats;
-                        r.Attribute("w" + challengerWeightLbl.Text).Value = W100.ToString();
+                        result.Attribute("w" + challengerWeightLbl.Text).Value = W100.ToString();
                         break;
                     default:
                         MessageBox.Show("Weight doesn't choose", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
