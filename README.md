@@ -8,16 +8,16 @@
 
 <div>
     <p>
-    ![Стартовый экран](https://github.com/Aemulatio/CrossfitChallengeReportHelper/XML/media/start.png)
+    ![Стартовый экран](https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/start.png)
     </p>
     <p>
-    ![Внесение участников](https://raw.githubusercontent.com/Aemulatio/CrossfitChallengeReportHelper/XML/media/addPersonPage.png)
+    ![Внесение участников](https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/addPersonPage.png)
     </p>
     <p>
-    ![Добавление результатов](https://raw.githubusercontent.com/Aemulatio/CrossfitChallengeReportHelper/XML/media/addResultPage.png)
+    ![Добавление результатов](https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/addResultPage.png)
     </p>
     <p>
-    ![Результаты](https://raw.githubusercontent.com/Aemulatio/CrossfitChallengeReportHelper/XML/media/ShowPageResult.png)
+    ![Результаты](https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/ShowPageResult.png)
     </p>
 </div>
 
