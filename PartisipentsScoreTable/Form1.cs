@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PartisipentsScoreTable
@@ -19,7 +13,6 @@ namespace PartisipentsScoreTable
             sidePanel.Height = homeBtn.Height;
             sidePanel.Top = homeBtn.Top;
             homePage1.BringToFront();
-
         }
 
         private bool mouseDown;
@@ -62,7 +55,6 @@ namespace PartisipentsScoreTable
             sidePanel.Top = createDocBtn.Top;
 
             filePage1.BringToFront();
-
         }
 
         private void homeBtn_Click(object sender, EventArgs e)
@@ -71,7 +63,6 @@ namespace PartisipentsScoreTable
             sidePanel.Top = homeBtn.Top;
 
             homePage1.BringToFront();
-
         }
 
         private void addPersonBtn_Click(object sender, EventArgs e)
