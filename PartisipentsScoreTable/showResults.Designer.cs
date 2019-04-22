@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.challengerDataGridView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.w25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +39,8 @@
             this.w80 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.w100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sumOfAll = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.challengerDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,18 +68,6 @@
             this.challengerDataGridView.Size = new System.Drawing.Size(945, 549);
             this.challengerDataGridView.TabIndex = 1;
             this.challengerDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.challengerDataGridView_CellContentClick);
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(945, 30);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Обновить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // number
             // 
@@ -149,10 +138,35 @@
             this.sumOfAll.Name = "sumOfAll";
             this.sumOfAll.ReadOnly = true;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(472, 30);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Обновить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(472, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(473, 30);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Сохранить";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // showResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.challengerDataGridView);
             this.Name = "showResults";
@@ -176,5 +190,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn w80;
         private System.Windows.Forms.DataGridViewTextBoxColumn w100;
         private System.Windows.Forms.DataGridViewTextBoxColumn sumOfAll;
+        private System.Windows.Forms.Button button2;
     }
 }

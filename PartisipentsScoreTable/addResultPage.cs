@@ -62,7 +62,6 @@ namespace PartisipentsScoreTable
 
                 #endregion
 
-
                 xDoc.Save("Challengers.xml");
             }
             catch (Exception exception)
@@ -160,9 +159,7 @@ namespace PartisipentsScoreTable
                 }
 
                 int currentRepeats = Convert.ToInt32(repeatsBox.Text);
-
                 IEnumerable<XElement> results = new List<XElement>();
-
                 try
                 {
                     results = from chal in xDoc.Root.Descendants("Challenger")

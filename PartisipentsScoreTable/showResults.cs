@@ -78,5 +78,10 @@ namespace PartisipentsScoreTable
         private void challengerDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //TODO: Сделать сохранение в эксельку 
+        }
     }
 }
