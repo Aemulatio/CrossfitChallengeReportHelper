@@ -21,6 +21,7 @@
     </p>
 </div>
 
+![Flow Chart](https://github.com/nozzle/react-static/raw/master/media/flow.png)
 
 
 
