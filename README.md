@@ -7,6 +7,14 @@
 
 
 
+
+
+<div>
+    <img src="https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/start.png">
+    
+</div>
+
+
     ![Стартовый экран](https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/start.png)
 
     ![Внесение участников](https://github.com/Aemulatio/CrossfitChallengeReportHelper/tree/XML/media/addPersonPage.png)
