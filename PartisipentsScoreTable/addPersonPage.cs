@@ -14,6 +14,8 @@ namespace PartisipentsScoreTable
             InitializeComponent();
         }
 
+        private XDocument xDoc;
+
         private void addBtn_Click(object sender, EventArgs e) //TODO: MessageBoxes Caption
         {
             string fullName = firstNameBox.Text + " " + lastNameBox.Text;
@@ -30,7 +32,7 @@ namespace PartisipentsScoreTable
                     }
                 }
 
-                XDocument xDoc = XDocument.Load("Challengers.xml");
+                xDoc = XDocument.Load("Challengers.xml");
 
                 List<int> bisyNumbersList = xDoc.Root
                     .Elements("Challenger")
@@ -77,10 +79,26 @@ namespace PartisipentsScoreTable
                     );
                 xDoc.Descendants("Challengers").Last().Add(newElement);
                 xDoc.Save("Challengers.xml");
+                busyNumbersList.Text += (personNumberBox.Text + "; ");
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void addPersonPage_Load(object sender, EventArgs e)
+        {
+            if (File.Exists(@".\Challengers.xml"))
+            {
+                xDoc = XDocument.Load("Challengers.xml");
+                var allResults = from chal in xDoc.Root.Descendants("Challenger")
+                    select chal.Attribute("Number").Value;
+
+                foreach (var VARIABLE in allResults)
+                {
+                    busyNumbersList.Text += (VARIABLE + "; ");
+                }
             }
         }
     }
