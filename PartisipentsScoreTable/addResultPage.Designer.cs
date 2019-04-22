@@ -91,7 +91,9 @@
             this.repeatsBox.Name = "repeatsBox";
             this.repeatsBox.Size = new System.Drawing.Size(112, 36);
             this.repeatsBox.TabIndex = 1;
+            this.repeatsBox.Text = "";
             this.repeatsBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.repeatsBox.Enter += new System.EventHandler(this.repeatsBox_Enter);
             // 
             // challengerNumberLbl
             // 
