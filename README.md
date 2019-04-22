@@ -1,2 +1,2 @@
 # CrossfitChallengeReportHelper
-                                                  from Stepan with ♥
+                                                  __from Stepan with ♥__
