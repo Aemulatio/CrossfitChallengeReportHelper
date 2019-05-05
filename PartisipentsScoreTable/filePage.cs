@@ -22,5 +22,19 @@ namespace PartisipentsScoreTable
             //TODO: Make save/load file;
             //TODO: If load -> convert to DB format (if it necessary)
         }
+
+        public string FileName
+        {
+            get { return fileNameBox.Text; }
+            set { fileNameBox.Text = value; }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (fileNameBox.Text != String.Empty)
+            {
+                
+            }
+        }
     }
 }
