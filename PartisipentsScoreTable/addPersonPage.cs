@@ -36,7 +36,7 @@ namespace PartisipentsScoreTable
 
                 if (dialogResult == DialogResult.No)
                 {
-                    
+                    //relocate to filePage
                     return;
                 }
             }
