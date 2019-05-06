@@ -49,14 +49,7 @@ namespace PartisipentsScoreTable
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void button2_Click(object sender, EventArgs e) //createBtn
-        {
-            sidePanel.Height = createDocBtn.Height;
-            sidePanel.Top = createDocBtn.Top;
-
-            filePage1.BringToFront();
-        }
-
+       
         private void homeBtn_Click(object sender, EventArgs e)
         {
             sidePanel.Height = homeBtn.Height;
@@ -65,12 +58,21 @@ namespace PartisipentsScoreTable
             homePage1.BringToFront();
         }
 
+        private void button2_Click(object sender, EventArgs e) //createBtn
+        {
+            sidePanel.Height = createDocBtn.Height;
+            sidePanel.Top = createDocBtn.Top;
+
+            filePage1.BringToFront();
+        }
+
         private void addPersonBtn_Click(object sender, EventArgs e)
         {
             sidePanel.Height = addPersonBtn.Height;
             sidePanel.Top = addPersonBtn.Top;
             
             addPersonPage1.BringToFront();
+            addPersonPage1.FileName = filePage1.FileName;
         }
 
         private void addResultBtn_Click(object sender, EventArgs e)
