@@ -31,7 +31,7 @@ namespace PartisipentsScoreTable
 
         private string _fileName = String.Empty;
 
-        private void button1_Click(object sender, EventArgs e)
+        private void submitNameButton_Click(object sender, EventArgs e)
         {
             if (fileNameBox.Text != String.Empty)
             {

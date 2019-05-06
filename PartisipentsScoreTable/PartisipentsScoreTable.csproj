@@ -77,11 +77,6 @@
     <Compile Include="addResultPage.Designer.cs">
       <DependentUpon>addResultPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChallengerDBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ChallengerDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="filePage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,17 +131,6 @@
     <EmbeddedResource Include="showResults.resx">
       <DependentUpon>showResults.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ChallengerDBDataSet.xsc">
-      <DependentUpon>ChallengerDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ChallengerDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ChallengerDBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ChallengerDBDataSet.xss">
-      <DependentUpon>ChallengerDBDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -174,13 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\Challengers.xml" />
-    <Content Include="ChallengerDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ChallengerDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>ChallengerDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Challengers.xml" />
     <Content Include="icons\jesper-aggergaard-539148-unsplash.jpg" />
     <Content Include="icons\scott-webb-22420-unsplash.jpg" />
