@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PartisipentsScoreTable
@@ -18,7 +13,6 @@ namespace PartisipentsScoreTable
             sidePanel.Height = homeBtn.Height;
             sidePanel.Top = homeBtn.Top;
             homePage1.BringToFront();
-
         }
 
         private bool mouseDown;
@@ -55,24 +49,21 @@ namespace PartisipentsScoreTable
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void button2_Click(object sender, EventArgs e) //createBtn
-        {
-            sidePanel.Height = createDocBtn.Height;
-            sidePanel.Top = createDocBtn.Top;
-
-            filePage1.BringToFront();
-
-        }
-
+       
         private void homeBtn_Click(object sender, EventArgs e)
         {
             sidePanel.Height = homeBtn.Height;
             sidePanel.Top = homeBtn.Top;
 
             homePage1.BringToFront();
+        }
 
+        private void button2_Click(object sender, EventArgs e) //createBtn
+        {
+            sidePanel.Height = createDocBtn.Height;
+            sidePanel.Top = createDocBtn.Top;
 
-
+            filePage1.BringToFront();
         }
 
         private void addPersonBtn_Click(object sender, EventArgs e)
@@ -81,6 +72,7 @@ namespace PartisipentsScoreTable
             sidePanel.Top = addPersonBtn.Top;
             
             addPersonPage1.BringToFront();
+            addPersonPage1.FileName = filePage1.FileName;
         }
 
         private void addResultBtn_Click(object sender, EventArgs e)
@@ -98,6 +90,21 @@ namespace PartisipentsScoreTable
             sidePanel.Top = showResults.Top;
 
             showResults1.BringToFront();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://vk.com/aemulatio");
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Process.Start("https://www.instagram.com/stiiipan/");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //TODO: Сделать чтонибудь к этой кнопке, только еще хз что))) 
         }
     }
 }

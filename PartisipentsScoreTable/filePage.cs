@@ -17,5 +17,26 @@ namespace PartisipentsScoreTable
             InitializeComponent();
         }
 
+        private void filePage_Load(object sender, EventArgs e)
+        {
+            //TODO: Make save/load file;
+            //TODO: If load -> convert to DB format (if it necessary)
+        }
+
+        public string FileName
+        {
+            get { return _fileName; }
+            set { _fileName = value; }
+        }
+
+        private string _fileName = String.Empty;
+
+        private void submitNameButton_Click(object sender, EventArgs e)
+        {
+            if (fileNameBox.Text != String.Empty)
+            {
+                FileName = fileNameBox.Text;
+            }
+        }
     }
 }

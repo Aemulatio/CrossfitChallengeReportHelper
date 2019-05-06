@@ -1,61 +1,165 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using System.IO;
 
 namespace PartisipentsScoreTable
 {
     public partial class addPersonPage : UserControl
     {
-        private List<Challenger> challengers;
-
         public addPersonPage()
         {
             InitializeComponent();
-            challengers = new List<Challenger>();
         }
 
-        private void addBtn_Click(object sender, EventArgs e)
+        private XDocument _xDoc;
+
+        private string _fileName = String.Empty;
+
+        public string FileName
+        {
+            get { return _fileName; }
+            set { _fileName = value; }
+        }
+
+        private void addBtn_Click(object sender, EventArgs e) //TODO: MessageBoxes Caption
         {
             string fullName = firstNameBox.Text + " " + lastNameBox.Text;
 
+
+            if (FileName == String.Empty)
+            {
+                DialogResult dialogResult = MessageBox.Show("Create file named as 'Untitle'?", "#",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (dialogResult == DialogResult.No)
+                {
+                    //relocate to filePage
+                    return;
+                }
+                else if (dialogResult == DialogResult.Yes)
+                {
+                    FileName = "Untitled";
+                    using (StreamWriter sr = File.CreateText(@".\" + FileName + ".xml"))
+                    {
+                        sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+                        sr.WriteLine("<Challengers>");
+                        sr.WriteLine("</Challengers>");
+                    }
+                }
+            }
+
             try
             {
-                //challengers.Add(new Challenger(Convert.ToInt32(personNumberBox.Text), fullName));
-                firstNameBox.Text = lastNameBox.Text = personNumberBox.Text = string.Empty;
+                if (!File.Exists(@".\" + FileName + ".xml"))
+                {
+                    using (StreamWriter sr = File.CreateText(@".\" + FileName + ".xml"))
+                    {
+                        sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+                        sr.WriteLine("<Challengers>");
+                        sr.WriteLine("</Challengers>");
+                    }
+                }
+
+                _xDoc = XDocument.Load(FileName + ".xml");
+
+                if (_xDoc.Root != null)
+                {
+                    List<int> bisyNumbersList = _xDoc.Root
+                        .Elements("Challenger")
+                        .Attributes("Number")
+                        .Select(x => (int) x).ToList();
+
+                    List<string> challengersList = _xDoc.Root
+                        .Elements("Challenger")
+                        .Attributes("Name")
+                        .Select(x => (string) x).ToList();
+
+
+                    if (firstNameBox.Text == string.Empty
+                        || lastNameBox.Text == String.Empty
+                        || personNumberBox.Text == String.Empty)
+                    {
+                        MessageBox.Show("Не все поля заполненны", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                    if (bisyNumbersList.Contains(Convert.ToInt32(personNumberBox.Text)))
+                    {
+                        MessageBox.Show("Номер уже занят", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                    if (challengersList.Contains(fullName))
+                    {
+                        MessageBox.Show("Уже внесен в список", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                }
+
+                XElement newElement =
+                    new XElement("Challenger",
+                        new XAttribute("Number", personNumberBox.Text),
+                        new XAttribute("Name", fullName),
+                        new XAttribute("w25", 0),
+                        new XAttribute("w35", 0),
+                        new XAttribute("w45", 0),
+                        new XAttribute("w60", 0),
+                        new XAttribute("w70", 0),
+                        new XAttribute("w80", 0),
+                        new XAttribute("w100", 0)
+                    );
+                _xDoc.Descendants("Challengers").Last().Add(newElement);
+                _xDoc.Save(FileName + ".xml");
+                busyNumbersList.Text += (personNumberBox.Text + "; ");
             }
-            catch
+            catch (Exception exception)
             {
-                MessageBox.Show("Введен не верный номер!", "Повнимательней!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
+                MessageBox.Show(exception.Message);
+                Console.WriteLine(exception.Data);
+                Console.WriteLine(exception.Source);
             }
+        }
 
-
-            Console.WriteLine("_________________________________");
-
-            foreach (var VARIABLE in challengers)
+        private void addPersonPage_Load(object sender, EventArgs e)
+        {
+            if (File.Exists(@".\" + FileName + ".xml"))
             {
-                Console.WriteLine(VARIABLE.Number);
-                Console.WriteLine(VARIABLE.Name);
-                Console.WriteLine();
+                _xDoc = XDocument.Load(FileName + ".xml");
+                if (_xDoc.Root != null)
+                {
+                    var allResults = from chal in _xDoc.Root.Descendants("Challenger")
+                        select chal.Attribute("Number").Value;
+
+                    foreach (var VARIABLE in allResults)
+                    {
+                        busyNumbersList.Text += (VARIABLE + "; ");
+                    }
+                }
             }
-            Console.WriteLine("_________________________________");
 
         }
 
-//        public List<Challenger> Challengers
-//        {
-//            get { return challengers; }
-//
-//        }
+        private void addPersonPage_Enter(object sender, EventArgs e)
+        {
+            busyNumbersList.Clear();
 
+            if (File.Exists(@".\" + FileName + ".xml"))
+            {
+                _xDoc = XDocument.Load(FileName + ".xml");
+                if (_xDoc.Root != null)
+                {
+                    var allResults = from chal in _xDoc.Root.Descendants("Challenger")
+                        select chal.Attribute("Number").Value;
 
-
-
+                    foreach (var variable in allResults)
+                    {
+                        busyNumbersList.Text += (variable + "; ");
+                    }
+                }
+            }
+        }
     }
 }

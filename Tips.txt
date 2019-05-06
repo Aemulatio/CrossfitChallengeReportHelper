@@ -1,0 +1,5 @@
+
+    insert into <название таблицы> ([<Имя столбца>, ... ]) values (<Значение>,...)
+    https://social.msdn.microsoft.com/Forums/vstudio/ru-RU/e5fa4f20-8293-4461-9fee-91867d4318ea/c-sql-insert-statement?forum=csharpgeneral
+    https://stackoverflow.com/questions/12241084/how-to-insert-data-into-sql-server
+    string f = reader["название_колонки"].ToString();
