@@ -25,15 +25,17 @@ namespace PartisipentsScoreTable
 
         public string FileName
         {
-            get { return fileNameBox.Text; }
-            set { fileNameBox.Text = value; }
+            get { return _fileName; }
+            set { _fileName = value; }
         }
+
+        private string _fileName = String.Empty;
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (fileNameBox.Text != String.Empty)
             {
-                
+                FileName = fileNameBox.Text;
             }
         }
     }
