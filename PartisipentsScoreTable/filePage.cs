@@ -15,6 +15,8 @@ namespace PartisipentsScoreTable
         public filePage()
         {
             InitializeComponent();
+
+            openFileDialog1.Filter = "XML tables(*.xml)|*.xml";
         }
 
         private void filePage_Load(object sender, EventArgs e)
@@ -37,6 +39,18 @@ namespace PartisipentsScoreTable
             {
                 FileName = fileNameBox.Text;
             }
+        }
+
+        private void LoadBtn_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+             FileName = openFileDialog1.SafeFileName;
+             FileName = FileName.Remove(FileName.Length - 4);
+            // читаем файл в строку
+            Console.WriteLine("FN - " + FileName);
+            MessageBox.Show("Файл открыт");
         }
     }
 }
