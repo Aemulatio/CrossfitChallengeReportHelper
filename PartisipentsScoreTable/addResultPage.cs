@@ -22,17 +22,18 @@ namespace PartisipentsScoreTable
         }
 
         private XDocument xDoc;
+        public string FileName { get; set; }
 
         private void addResultPage_Load(object sender, EventArgs e)
         {
             try
             {
-                if (!File.Exists(@".\Challengers.xml"))
+                if (!File.Exists(@".\" + FileName + ".xml"))
                 {
                     return;
                 }
 
-                xDoc = XDocument.Load("Challengers.xml");
+                xDoc = XDocument.Load(FileName + ".xml");
 
                 #region ChallengersNumberComboBox
 
@@ -62,7 +63,7 @@ namespace PartisipentsScoreTable
 
                 #endregion
 
-                xDoc.Save("Challengers.xml");
+                xDoc.Save(FileName + ".xml");
             }
             catch (Exception exception)
             {
@@ -76,7 +77,12 @@ namespace PartisipentsScoreTable
         {
             try
             {
-                xDoc = XDocument.Load("Challengers.xml");
+                if (!File.Exists(@".\" + FileName + ".xml"))
+                {
+                    return;
+                }
+
+                xDoc = XDocument.Load(FileName + ".xml");
 
                 #region GettingAllRepeats
 
@@ -173,7 +179,6 @@ namespace PartisipentsScoreTable
 
                 XElement result = results.ElementAt(0);
 
-
                 switch (challengerWeightLbl.Text)
                 {
                     case "25":
@@ -209,7 +214,7 @@ namespace PartisipentsScoreTable
                         break;
                 }
 
-                xDoc.Save("Challengers.xml");
+                xDoc.Save(FileName + ".xml");
                 CurrentStatus.Text = "Обновил (☆▽☆)";
 
                 weightsBox.Text = "";
@@ -245,6 +250,11 @@ namespace PartisipentsScoreTable
 
         private void repeatsBox_Enter(object sender, EventArgs e)
         {
+        }
+
+        private void addResultPage_Enter(object sender, EventArgs e)
+        {
+            addResultPage_Load(sender, e);
         }
     }
 }
