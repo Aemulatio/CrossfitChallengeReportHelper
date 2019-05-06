@@ -91,7 +91,6 @@
             this.repeatsBox.Name = "repeatsBox";
             this.repeatsBox.Size = new System.Drawing.Size(112, 36);
             this.repeatsBox.TabIndex = 1;
-            this.repeatsBox.Text = "";
             this.repeatsBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.repeatsBox.Enter += new System.EventHandler(this.repeatsBox_Enter);
             // 
@@ -178,6 +177,7 @@
             this.Name = "addResultPage";
             this.Size = new System.Drawing.Size(945, 579);
             this.Load += new System.EventHandler(this.addResultPage_Load);
+            this.Enter += new System.EventHandler(this.addResultPage_Enter);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);

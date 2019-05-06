@@ -81,6 +81,8 @@ namespace PartisipentsScoreTable
             sidePanel.Top = addResultBtn.Top;
 
             addResultPage1.BringToFront();
+            addResultPage1.FileName = filePage1.FileName;
+
         }
 
         private void showResults_Click(object sender, EventArgs e)
@@ -90,6 +92,7 @@ namespace PartisipentsScoreTable
             sidePanel.Top = showResults.Top;
 
             showResults1.BringToFront();
+            showResults1.FileName = filePage1.FileName;
         }
 
         private void button1_Click(object sender, EventArgs e)
