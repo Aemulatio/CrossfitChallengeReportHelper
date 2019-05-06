@@ -34,11 +34,14 @@
             this.fileNameBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.LoadBtn = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.LoadBtn);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Modern No. 20", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(191, 80);
@@ -90,7 +93,18 @@
             // 
             // openFileDialog1
             // 
+            this.openFileDialog1.DefaultExt = "xml ";
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // LoadBtn
+            // 
+            this.LoadBtn.Location = new System.Drawing.Point(25, 96);
+            this.LoadBtn.Name = "LoadBtn";
+            this.LoadBtn.Size = new System.Drawing.Size(239, 46);
+            this.LoadBtn.TabIndex = 0;
+            this.LoadBtn.Text = "Load";
+            this.LoadBtn.UseVisualStyleBackColor = true;
+            this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
             // 
             // filePage
             // 
@@ -101,6 +115,7 @@
             this.Name = "filePage";
             this.Size = new System.Drawing.Size(945, 579);
             this.Load += new System.EventHandler(this.filePage_Load);
+            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -115,5 +130,6 @@
         private System.Windows.Forms.Button submitNameButton;
         private System.Windows.Forms.TextBox fileNameBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button LoadBtn;
     }
 }
