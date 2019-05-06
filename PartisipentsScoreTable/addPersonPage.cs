@@ -16,9 +16,30 @@ namespace PartisipentsScoreTable
 
         private XDocument xDoc;
 
+        private string _fileName = String.Empty;
+        Form1 form1 = new Form1();
+        public string FileName
+        {
+            get { return _fileName; }
+            set { _fileName = value; }
+        }
+
         private void addBtn_Click(object sender, EventArgs e) //TODO: MessageBoxes Caption
         {
             string fullName = firstNameBox.Text + " " + lastNameBox.Text;
+
+
+            if (FileName == String.Empty)
+            {
+                DialogResult dialogResult = MessageBox.Show("Create file named as 'Untitle'?", "#",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (dialogResult == DialogResult.No)
+                {
+
+                    return;
+                }
+            }
 
             try
             {
