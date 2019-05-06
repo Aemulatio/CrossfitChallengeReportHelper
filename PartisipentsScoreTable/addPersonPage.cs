@@ -17,7 +17,7 @@ namespace PartisipentsScoreTable
         private XDocument xDoc;
 
         private string _fileName = String.Empty;
-        Form1 form1 = new Form1();
+
         public string FileName
         {
             get { return _fileName; }
@@ -36,7 +36,7 @@ namespace PartisipentsScoreTable
 
                 if (dialogResult == DialogResult.No)
                 {
-
+                    
                     return;
                 }
             }
