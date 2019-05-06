@@ -118,11 +118,13 @@
             // busyNumbersList
             // 
             this.busyNumbersList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.busyNumbersList.Enabled = false;
             this.busyNumbersList.Font = new System.Drawing.Font("Modern No. 20", 27.7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.busyNumbersList.Location = new System.Drawing.Point(698, 116);
             this.busyNumbersList.Name = "busyNumbersList";
+            this.busyNumbersList.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.busyNumbersList.Size = new System.Drawing.Size(217, 352);
-            this.busyNumbersList.TabIndex = 0;
+            this.busyNumbersList.TabIndex = 10;
             this.busyNumbersList.Text = "";
             // 
             // addPersonPage
@@ -141,6 +143,7 @@
             this.Name = "addPersonPage";
             this.Size = new System.Drawing.Size(945, 579);
             this.Load += new System.EventHandler(this.addPersonPage_Load);
+            this.Enter += new System.EventHandler(this.addPersonPage_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();
 

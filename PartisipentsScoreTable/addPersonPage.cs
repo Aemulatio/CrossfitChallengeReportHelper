@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -39,21 +40,31 @@ namespace PartisipentsScoreTable
                     //relocate to filePage
                     return;
                 }
+                else if (dialogResult == DialogResult.Yes)
+                {
+                    FileName = "Untitled";
+                    using (StreamWriter sr = File.CreateText(@".\" + FileName + ".xml"))
+                    {
+                        sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+                        sr.WriteLine("<Challengers>");
+                        sr.WriteLine("</Challengers>");
+                    }
+                }
             }
 
             try
             {
-                if (!File.Exists(@".\Challengers.xml"))
+                if (!File.Exists(@".\" + FileName + ".xml"))
                 {
-                    using (StreamWriter sr = File.CreateText(@".\Challengers.xml"))
+                    using (StreamWriter sr = File.CreateText(@".\" + FileName + ".xml"))
                     {
-                        sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf - 8\" ?>");
+                        sr.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
                         sr.WriteLine("<Challengers>");
                         sr.WriteLine("</Challengers>");
                     }
                 }
 
-                xDoc = XDocument.Load("Challengers.xml");
+                xDoc = XDocument.Load(FileName + ".xml");
 
                 List<int> bisyNumbersList = xDoc.Root
                     .Elements("Challenger")
@@ -99,20 +110,40 @@ namespace PartisipentsScoreTable
                         new XAttribute("w100", 0)
                     );
                 xDoc.Descendants("Challengers").Last().Add(newElement);
-                xDoc.Save("Challengers.xml");
+                xDoc.Save(FileName + ".xml");
                 busyNumbersList.Text += (personNumberBox.Text + "; ");
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
+                Console.WriteLine(exception.Data);
+                Console.WriteLine(exception.Source);
             }
         }
 
         private void addPersonPage_Load(object sender, EventArgs e)
         {
-            if (File.Exists(@".\Challengers.xml"))
+            if (File.Exists(@".\" + FileName + ".xml"))
             {
-                xDoc = XDocument.Load("Challengers.xml");
+                xDoc = XDocument.Load(FileName + ".xml");
+                var allResults = from chal in xDoc.Root.Descendants("Challenger")
+                    select chal.Attribute("Number").Value;
+
+                foreach (var VARIABLE in allResults)
+                {
+                    busyNumbersList.Text += (VARIABLE + "; ");
+                }
+            }
+
+        }
+
+        private void addPersonPage_Enter(object sender, EventArgs e)
+        {
+            busyNumbersList.Clear();
+
+            if (File.Exists(@".\" + FileName + ".xml"))
+            {
+                xDoc = XDocument.Load(FileName + ".xml");
                 var allResults = from chal in xDoc.Root.Descendants("Challenger")
                     select chal.Attribute("Number").Value;
 
