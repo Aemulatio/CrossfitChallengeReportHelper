@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -15,7 +14,7 @@ namespace PartisipentsScoreTable
             InitializeComponent();
         }
 
-        private XDocument xDoc;
+        private XDocument _xDoc;
 
         private string _fileName = String.Empty;
 
@@ -64,37 +63,40 @@ namespace PartisipentsScoreTable
                     }
                 }
 
-                xDoc = XDocument.Load(FileName + ".xml");
+                _xDoc = XDocument.Load(FileName + ".xml");
 
-                List<int> bisyNumbersList = xDoc.Root
-                    .Elements("Challenger")
-                    .Attributes("Number")
-                    .Select(x => (int) x).ToList();
-
-                List<string> challengersList = xDoc.Root
-                    .Elements("Challenger")
-                    .Attributes("Name")
-                    .Select(x => (string) x).ToList();
-
-
-                if (firstNameBox.Text == string.Empty
-                    || lastNameBox.Text == String.Empty
-                    || personNumberBox.Text == String.Empty)
+                if (_xDoc.Root != null)
                 {
-                    MessageBox.Show("Не все поля заполненны", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
+                    List<int> bisyNumbersList = _xDoc.Root
+                        .Elements("Challenger")
+                        .Attributes("Number")
+                        .Select(x => (int) x).ToList();
 
-                if (bisyNumbersList.Contains(Convert.ToInt32(personNumberBox.Text)))
-                {
-                    MessageBox.Show("Номер уже занят", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
+                    List<string> challengersList = _xDoc.Root
+                        .Elements("Challenger")
+                        .Attributes("Name")
+                        .Select(x => (string) x).ToList();
 
-                if (challengersList.Contains(fullName))
-                {
-                    MessageBox.Show("Уже внесен в список", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
+
+                    if (firstNameBox.Text == string.Empty
+                        || lastNameBox.Text == String.Empty
+                        || personNumberBox.Text == String.Empty)
+                    {
+                        MessageBox.Show("Не все поля заполненны", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                    if (bisyNumbersList.Contains(Convert.ToInt32(personNumberBox.Text)))
+                    {
+                        MessageBox.Show("Номер уже занят", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                    if (challengersList.Contains(fullName))
+                    {
+                        MessageBox.Show("Уже внесен в список", "#", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
                 }
 
                 XElement newElement =
@@ -109,8 +111,8 @@ namespace PartisipentsScoreTable
                         new XAttribute("w80", 0),
                         new XAttribute("w100", 0)
                     );
-                xDoc.Descendants("Challengers").Last().Add(newElement);
-                xDoc.Save(FileName + ".xml");
+                _xDoc.Descendants("Challengers").Last().Add(newElement);
+                _xDoc.Save(FileName + ".xml");
                 busyNumbersList.Text += (personNumberBox.Text + "; ");
             }
             catch (Exception exception)
@@ -125,13 +127,16 @@ namespace PartisipentsScoreTable
         {
             if (File.Exists(@".\" + FileName + ".xml"))
             {
-                xDoc = XDocument.Load(FileName + ".xml");
-                var allResults = from chal in xDoc.Root.Descendants("Challenger")
-                    select chal.Attribute("Number").Value;
-
-                foreach (var VARIABLE in allResults)
+                _xDoc = XDocument.Load(FileName + ".xml");
+                if (_xDoc.Root != null)
                 {
-                    busyNumbersList.Text += (VARIABLE + "; ");
+                    var allResults = from chal in _xDoc.Root.Descendants("Challenger")
+                        select chal.Attribute("Number").Value;
+
+                    foreach (var VARIABLE in allResults)
+                    {
+                        busyNumbersList.Text += (VARIABLE + "; ");
+                    }
                 }
             }
 
@@ -143,13 +148,16 @@ namespace PartisipentsScoreTable
 
             if (File.Exists(@".\" + FileName + ".xml"))
             {
-                xDoc = XDocument.Load(FileName + ".xml");
-                var allResults = from chal in xDoc.Root.Descendants("Challenger")
-                    select chal.Attribute("Number").Value;
-
-                foreach (var VARIABLE in allResults)
+                _xDoc = XDocument.Load(FileName + ".xml");
+                if (_xDoc.Root != null)
                 {
-                    busyNumbersList.Text += (VARIABLE + "; ");
+                    var allResults = from chal in _xDoc.Root.Descendants("Challenger")
+                        select chal.Attribute("Number").Value;
+
+                    foreach (var variable in allResults)
+                    {
+                        busyNumbersList.Text += (variable + "; ");
+                    }
                 }
             }
         }
